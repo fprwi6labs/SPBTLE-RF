@@ -121,7 +121,7 @@ class SensorServiceClass
     void       Update_Time_Characteristics(void);
 
     tBleStatus Add_LED_Service(void);
-    bool       LED_State(void);
+    bool       LED_State(void) {return ledState;}
 
     void       GAP_ConnectionComplete_CB(uint8_t addr[BDADDR_SIZE], uint16_t handle);
     void       GAP_DisconnectionComplete_CB(void);
@@ -143,7 +143,7 @@ class SensorServiceClass
     volatile uint8_t notification_enabled = FALSE;
     volatile AxesRaw_t *axes_data;
 
-    uint8_t ledState = 0;
+    bool ledState = false;
     uint32_t previousMinuteValue = 0;
 };
 

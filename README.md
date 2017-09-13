@@ -33,16 +33,17 @@ you can click on each one (for example St Sensor Env Service, then Temperature) 
 
 
 The SPBTLE-RF uses SPI. You need to configure the pin used for spi link.
-  SPIClass SPI_3(44, 43, 42);
+  SPIClass SPI_3(MOSI, MISO, CLK);
 
 Choose the SPI used by the SPBTLE-RF, and the pinout of the device. A cheep select pin, spiIRQ pin, reset PIN and a led (optional) are required.
-  SPBTLERFClass BTLE(&SPI_3, 50, 57, 31, LED4);
+  SPBTLERFClass BTLE(SPI_X, CS pin, IRQ pin, reset pin);
+  SPBTLERFClass BTLE(SPI_X, CS pin, IRQ pin, reset pin, LED pin);
 
 Start the bluetooth module.
-  BTLE.begin(DISABLE_LOW_POWER_MODE);
+  BTLE.begin();
 
 Start the service. For example the BeaconService in UID_TYPE.
-  BeaconService.begin(SERVER_BDADDR, BEACON_ID, NameSpace);
+  BeaconService.begin(SERVER_BDADDR, beaconID, NameSpace);
 
 ## Documentation
 
